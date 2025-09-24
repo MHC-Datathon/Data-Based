@@ -1,0 +1,26 @@
+,campus,p_high_next,risk_next_tier,rate_last,rate_sem_avg,expo_last
+0,CUNY Graduate School of Public Health and Health Policy,0.8395810369446767,high,,14.958258747198665,
+1,The City College of New York,0.8395139975877886,high,,7.820947884400616,
+2,Lehman College,0.8394448535531192,high,,7.719023070919769,
+3,Hostos Community College,0.7425500514778234,high,,4.453736461767284,
+4,Baruch College,0.29773936633671655,medium,,3.107013666618298,
+5,Hunter College,0.21458263590310445,medium,,2.6840766811899734,
+6,Bronx Community College,0.19001149956128507,medium,,2.685050724549768,
+7,New York City College of Technology (City Tech),0.1278404914252018,medium,,2.4764083907221264,
+8,Craig Newmark Graduate School of Journalism,0.08979661673226044,medium,,0.7718676591456842,
+9,Brooklyn College,0.08941050462106764,medium,,2.1884210211344355,
+10,CUNY School of Professional Studies,0.07976303742547829,medium,,0.9735472982261213,
+11,Guttman Community College,0.07643302907420493,medium,,0.7258025138718089,
+12,CUNY School of Labor and Urban Studies,0.07569670549912506,medium,,0.5205675185570723,
+13,CUNY Graduate Center,0.06803893778421052,medium,,0.8882188756359932,
+14,Kingsborough Community College,0.06582706344933625,medium,,0.3435004875065578,
+15,Queens College,0.06299771499090255,low,,0.9233772971256798,
+16,York College,0.06134705793257984,low,,1.021535460271838,
+17,Medgar Evers College,0.059863769516801696,low,,0.6693577578302102,
+18,CUNY School of Law,0.05985786221238476,low,,0.5427438802296891,
+19,LaGuardia Community College,0.057931167788578125,low,,0.19605428816370024,
+20,College of Staten Island,0.05479892250655572,low,0.0,0.0,2647.0
+21,Queensborough Community College,0.05442315310354125,low,0.0,0.0,7334.0
+22,Borough of Manhattan Community College,0.0542804599081239,low,0.0,0.0,21952.0
+23,John Jay College of Criminal Justice,0.05409635463355941,low,0.0,0.0,29764.0
+24,Macaulay Honors College,0.053223183222690505,low,0.0,0.0,75547.0
