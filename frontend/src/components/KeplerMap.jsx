@@ -1,44 +1,79 @@
-import React, {useEffect} from 'react';
+// src/components/KeplerMap.jsx
+import React, {useEffect, useState} from 'react';
 import KeplerGl from '@kepler.gl/components';
 import {useDispatch} from 'react-redux';
 import {addDataToMap} from '@kepler.gl/actions';
 import {processGeojson} from '@kepler.gl/processors';
 
-const TOKEN = import.meta.env.VITE_MAPBOX_TOKEN;
+const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN;
 
-export default function KeplerMap({id, dataUrl, label='Campuses', config, centerMap=true, height=600}) {
+export default function KeplerMap({
+  id = 'map',
+  dataUrl = '/data/campus_points_with_scores.geojson',
+  label = 'Campuses',
+  centerMap = true,
+  height = 600
+}) {
   const dispatch = useDispatch();
+  const [status, setStatus] = useState('loading');
 
   useEffect(() => {
-    let alive = true;
+    let cancelled = false;
+
     (async () => {
       try {
-        const res = await fetch(dataUrl);
-        if (!res.ok) throw new Error(`HTTP ${res.status} ${dataUrl}`);
-        const geo = await res.json();
-
-        const dataset = {
-          data: processGeojson(geo),
-          info: {id: `${id}-dataset`, label}
-        };
-
-        if (alive) {
-          dispatch(addDataToMap({datasets: dataset, options: {centerMap}, config}));
-          console.log(`Loaded ${label}`, dataset.data.rows.length, 'rows');
+        // 1) Token sanity check
+        if (!MAPBOX_TOKEN) {
+          console.warn('VITE_MAPBOX_TOKEN missing');
+          setStatus('no-token');
         }
+
+        // 2) Fetch GeoJSON (must live under /public/data)
+        const res = await fetch(dataUrl);
+        if (!res.ok) throw new Error(`Fetch failed ${res.status}`);
+        const geojson = await res.json();
+
+        if (cancelled) return;
+
+        // 3) Dispatch to kepler
+        dispatch(addDataToMap({
+          datasets: {
+            data: processGeojson(geojson),
+            info: {label, id: `${id}-dataset`}
+          },
+          options: {centerMap: true, readOnly: true}
+          // You can add a {config} here later if you export one from the UI
+        }));
+
+        setStatus('ready');
       } catch (e) {
-        console.error('Failed to load dataset:', e);
+        console.error('Kepler data load error:', e);
+        setStatus('error');
       }
     })();
-    return () => { alive = false; };
-  }, [id, dataUrl, label, config, centerMap, dispatch]);
+
+    return () => { cancelled = true; };
+  }, [dataUrl, label, centerMap, id, dispatch]);
 
   return (
-    <div style={{height}}>
+    <div style={{position: 'relative', width: '100%', height}}>
+      {/* Light status ribbon so you know what’s happening */}
+      {status !== 'ready' && (
+        <div style={{
+          position:'absolute', zIndex:10, top:8, left:8,
+          background:'#0009', color:'#fff', padding:'4px 8px',
+          borderRadius:4, fontSize:12
+        }}>
+          {status === 'loading' && 'Loading…'}
+          {status === 'no-token' && 'Mapbox token missing'}
+          {status === 'error' && 'Failed to load data'}
+        </div>
+      )}
+
       <KeplerGl
         id={id}
-        mapboxApiAccessToken={TOKEN}
-        width={window.innerWidth}
+        mapboxApiAccessToken={MAPBOX_TOKEN}
+        width={window.innerWidth}   // simple sizing; good enough for now
         height={height}
       />
     </div>

@@ -2,27 +2,18 @@ import React from 'react';
 import {Provider} from 'react-redux';
 import {store} from './store';
 import KeplerMap from './components/KeplerMap';
+// src/App.jsx
+import KeplerEmbed from './components/KeplerEmbed';
 
-export default function App(){
+export default function App() {
   return (
-    <Provider store={store}>
+    <div>
       <h2>Historic (pooled) — risk_label</h2>
-      <KeplerMap
-        id="historic"
-        dataUrl="/data/campus_points_with_scores.geojson"
-        label="Historic pooled"
-        centerMap={true}
-        height={500}
-      />
+      <KeplerEmbed src="/maps/historic.html" title="Historic Map" height="70vh" />
 
-      <h2 style={{marginTop:24}}>Prediction — risk_next_tier</h2>
-      <KeplerMap
-        id="prediction"
-        dataUrl="/data/campus_points_with_scores.geojson"
-        label="Prediction"
-        centerMap={false}
-        height={500}
-      />
-    </Provider>
+      <h2 style={{marginTop: 24}}>Prediction — risk_next_tier</h2>
+      <KeplerEmbed src="/maps/prediction.html" title="Prediction Map" height="70vh" />
+      
+    </div>
   );
 }

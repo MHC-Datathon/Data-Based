@@ -1,9 +1,0 @@
-{
-  "dependencies": {
-    "@kepler.gl/components": "^3.2.0",
-    "@kepler.gl/reducers": "^3.2.0",
-    "core-js": "^3.45.1",
-    "kepler.gl": "^3.2.0",
-    "react-virtualized": "^9.22.6"
-  }
-}
