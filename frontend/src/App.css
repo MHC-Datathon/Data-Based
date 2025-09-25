@@ -1,42 +1,364 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+
+* {
+   font-family: "Inter", sans-serif;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+
+.title,
+.subtitle,
+.slide-title,
+.chart-title {
+   font-family: "Space Mono", monospace;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+.slide-title,
+.chart-title,
+.title,
+.subtitle {
+   font-family: "Space Mono", monospace;
+   font-weight: 700; 
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.slide2-text,
+.description-text,
+.data-source,
+.conclusion-text {
+   font-family: "Inter", sans-serif;
+}
+.slide {
+   height: 100vh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   position: relative;
 }
 
-.card {
-  padding: 2em;
+.slide-blue {
+   background-color: #87b4da;
 }
 
-.read-the-docs {
-  color: #888;
+.border-box {
+   border: 10px dashed white;
+   width: 90%;
+   height: 80%;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   padding: 1rem;
+   box-sizing: border-box;
+   overflow: hidden;
+}
+
+/* Slide 1 */
+.title {
+   font-size: 2.5rem;
+   font-weight: 900;
+   color: #2c239c;
+   margin-bottom: 0.5rem;
+   text-align: center;
+   padding: 0 1rem;
+}
+
+.subtitle {
+   font-size: 1.3rem;
+   font-weight: 600;
+   color: #2c239c;
+   margin-bottom: 1rem;
+   text-align: center;
+   padding: 0 1rem;
+}
+
+.bus-image {
+   width: 180px;
+   height: auto;
+   margin-top: 1rem;
+}
+
+/* Slide 2 */
+.slide2-content {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   width: 100%;
+   height: 100%;
+   padding: 0.5rem;
+}
+
+.slide-title {
+   font-size: 1.8rem;
+   font-weight: 700;
+   color: #2c239c;
+   margin-bottom: 0.8rem;
+   text-align: center;
+   padding: 0 1rem;
+}
+
+.slide2-text {
+   font-size: 1rem;
+   line-height: 1.4;
+   color: #2c239c;
+   text-align: center;
+   max-width: 700px;
+   margin-bottom: 1rem;
+   font-weight: 500;
+   padding: 0 1rem;
+}
+
+.charts-container {
+   display: flex;
+   justify-content: center;
+   align-items: flex-start;
+   gap: 3rem;
+   width: 100%;
+   max-width: 1000px;
+   flex-wrap: wrap;
+   margin-bottom: 1rem;
+}
+
+.chart-wrapper {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 0.5rem;
+}
+
+.stress-chart {
+   width: 400px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
+.improvement-chart {
+   width: 450px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
+.chart-title {
+   font-size: 1.1rem;
+   font-weight: 600;
+   color: #2c239c;
+   text-align: center;
+   padding: 0 0.5rem;
+   width: 100%;
+   margin: 0;
+   display: flex;
+   justify-content: center;
+}
+
+.stress-chart .chart {
+   width: 380px;
+   height: 280px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.improvement-chart .chart {
+   width: 430px;
+   height: 280px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.data-source {
+   font-size: 0.8rem;
+   color: #2c239c;
+   text-align: center;
+   margin-top: 0.5rem;
+   font-style: italic;
+}
+
+.graph-slide {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: flex-start;
+   width: 100%;
+   height: 100%;
+   padding: 0.5rem;
+   box-sizing: border-box;
+}
+
+.graph-slide .slide-title {
+   font-size: 1.8rem;
+   font-weight: 700;
+   color: #2c239c;
+   margin: 0.2rem 0 0.8rem 0;
+   text-align: center;
+   padding: 0 1rem;
+   width: 100%;
+}
+
+.slide5-9 .slide-title {
+   margin-top: 0.2rem;
+   margin-bottom: 0.5rem;
+   font-size: 1.6rem;
+}
+
+.graph-content {
+   display: flex;
+   width: 100%;
+   height: 90%;
+   gap: 2rem;
+   align-items: flex-start;
+   margin-top: 0;
+}
+
+.graph-slide:has(.college-grid) .slide-title {
+   margin-bottom: 0.5rem;
+}
+
+.graph-slide:has(.college-grid) .college-grid {
+   height: 85%;
+   margin-top: 0.5rem;
+}
+
+.graph-content {
+   display: flex;
+   width: 100%;
+   height: 85%;
+   gap: 2rem;
+   align-items: flex-start;
+}
+
+.graph-left {
+   flex: 1.2;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100%;
+}
+
+.graph-right {
+   flex: 0.8;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   padding: 1rem;
+}
+
+.description-text {
+   font-size: 1.1rem;
+   line-height: 1.5;
+   color: #2c239c;
+   text-align: left;
+}
+
+.kepler-container {
+   width: 100%;
+   height: 85%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.kepler-embed {
+   width: 95%;
+   height: 100%;
+   border: none;
+   border-radius: 8px;
+}
+
+.image-container {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100%;
+   width: 100%;
+}
+
+.graph-image {
+   max-width: 100%;
+   max-height: 100%;
+   object-fit: contain;
+   border-radius: 8px;
+}
+
+.wide-image {
+   width: 80%;
+   height: auto;
+}
+
+.college-grid {
+   display: grid;
+   grid-template-columns: repeat(2, 1fr);
+   gap: 1rem;
+   width: 90%;
+   height: 70%;
+   overflow-y: auto;
+}
+
+.college-item {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 0.5rem;
+}
+
+.college-image {
+   width: 100%;
+   height: 150px;
+   object-fit: contain;
+   border-radius: 6px;
+}
+
+.college-item p {
+   margin: 0;
+   font-size: 0.9rem;
+   color: #2c239c;
+   font-weight: 600;
+}
+
+.conclusion-slide {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   text-align: center;
+   padding: 2rem;
+}
+
+.conclusion-text {
+   font-size: 1.2rem;
+   color: #2c239c;
+   max-width: 600px;
+   line-height: 1.5;
+   margin-top: 1rem;
+}
+
+/* Navigation buttons */
+.nav-button {
+   position: absolute;
+   top: 50%;
+   transform: translateY(-50%);
+   font-size: 2.5rem;
+   background: none;
+   border: none;
+   color: white;
+   cursor: pointer;
+   font-weight: bold;
+   padding: 0 1rem;
+   user-select: none;
+   z-index: 10;
+}
+
+.nav-button.left {
+   left: 10px;
+}
+
+.nav-button.right {
+   right: 10px;
+}
+
+.nav-button:hover {
+   color: #ffeb3b;
 }
