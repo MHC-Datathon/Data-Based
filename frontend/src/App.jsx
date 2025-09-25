@@ -207,6 +207,17 @@ function App() {
                            violations. Campuses are ranked by violation exposure
                            and risk factors, showing which institutions need
                            immediate attention for commute improvements.
+                           <br />
+                           <br /> This was done so by pulling MTA/NYC Open Data
+                           feeds and drawing a 2km circle (buffer zone) around
+                           each CUNY campus.
+                           <br />
+                           <br /> After training an elastic-net logistic model
+                           (with cross-validation metrics ROC-AUC=0.981,
+                           PR-AUC=0.955, best_thr=0.28), we were able to predict
+                           each campus's probability of being "high-risk" for
+                           the next month (using previous month's metrics as
+                           inputs).
                         </p>
                      </div>
                   </div>
@@ -255,10 +266,24 @@ function App() {
                      </div>
                      <div className="graph-right">
                         <p className="description-text">
-                           Correlation between student exposure to bus routes
-                           and violation rates. The bubble size represents
-                           burstiness: larger bubbles indicate more concentrated
-                           violation patterns requiring targeted solutions.
+                           Burstiness in this graph represents the temporal
+                           clustering or irregularity of violations over time.
+                           High burstiness = violations happen in sporadic
+                           clusters over long periods of time. Low burstiness =
+                           violations are more evenly distributed over time.
+                           <br />
+                           <br />
+                           Most campuses across all exposure levels show similar
+                           maximum violation rates (0-4 per 100 trips). There
+                           are 3-4 extreme outlier campuses with very high
+                           violation rates in low-exposure areas. There is one
+                           datapoint above 1.2M exposure, but there isn't enough
+                           data to make conclusions about this. However, there
+                           is extremely high burstiness in some lower-exposure
+                           areas High-exposure, low-violation areas should
+                           maintain current practices, while the specific
+                           outlier campuses (regardless of exposure level) needs
+                           further investigation.
                         </p>
                      </div>
                   </div>
@@ -328,7 +353,9 @@ function App() {
                   <p className="conclusion-text">
                      Addressing bus lane violations can significantly improve
                      commute times and reduce stress for CUNY students across
-                     all campuses.
+                     all campuses. By using machine learning to determine which
+                     campus areas are prone to most violations, we can take
+                     effective measures to decrease its likeliness.
                   </p>
                </div>
             )}
