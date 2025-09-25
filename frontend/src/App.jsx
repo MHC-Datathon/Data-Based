@@ -1,8 +1,7 @@
 import React from 'react';
 import {Provider} from 'react-redux';
 import {store} from './store';
-import KeplerMap from './components/KeplerMap';
-// src/App.jsx
+
 import KeplerEmbed from './components/KeplerEmbed';
 
 export default function App() {
